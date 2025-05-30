@@ -1,10 +1,12 @@
-import AnimatedNav from "./components/AnimatedNav.jsx";
+import AnimatedNav from "./components/MobileNavbar.jsx";
 import React from "react";
+import Navbar from "./components/Navbar.jsx";
 
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <>
       <AnimatedNav />
-    </div>
+      <Navbar />
+    </>
   );
 }
