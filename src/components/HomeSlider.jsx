@@ -1,3 +1,4 @@
+import { Slice } from 'lucide-react';
 import React from 'react'
 import { useState, useEffect } from 'react';
 
@@ -7,19 +8,22 @@ const NavSilder = () => {
       id: 1,
       title: "First Slide",
       description: "This is the first slide content",
-      bgColor: "bg-blue-500"
+      bgColor: "bg-blue-500",
+      img: "https://images.uzum.uz/d0qkl4q7s4fo7mqb2tsg/main_page_banner.jpg",
     },
     {
       id: 2,
       title: "Second Slide",
       description: "This is the second slide content",
-      bgColor: "bg-green-500"
+      bgColor: "bg-green-500",
+      img: "https://images.uzum.uz/d0qm6oa7s4fo7mqb3f10/main_page_banner.jpg",
     },
     {
       id: 3,
       title: "Third Slide",
       description: "This is the third slide content",
-      bgColor: "bg-purple-500"
+      bgColor: "bg-purple-500",
+      img: "https://images.uzum.uz/d0m0v3i7s4fo7mqa1lq0/main_page_banner.jpg",
     },
   ];
 
@@ -27,23 +31,27 @@ const NavSilder = () => {
     {
       id: 1,
       title: "Brand A",
-      img: "Description for Brand A",
+      img: "https://images.uzum.uz/d0qkl4q7s4fo7mqb2tsg/main_page_banner.jpg",
+      address: "/#",
     },
     {
       id: 2,
       title: "Brand B",
-      img: "Description for Brand B",
+      img: "https://images.uzum.uz/d0qm6oa7s4fo7mqb3f10/main_page_banner.jpg",
+      address: "/#",
 
     },
     {
       id: 3,
       title: "Brand C",
-      img: "Description for Brand C",
+      img: "https://images.uzum.uz/d0m0v3i7s4fo7mqa1lq0/main_page_banner.jpg",
+      address: "/#",
     },
-    {
-      id: 4,
+        {
+      id: 3,
       title: "Brand C",
-      img: "Description for Brand C",
+      img: "https://images.uzum.uz/d0m0v3i7s4fo7mqa1lq0/main_page_banner.jpg",
+      address: "/#",
     },
   ]
 
@@ -76,7 +84,7 @@ const NavSilder = () => {
   }, [currentIndex, autoPlay]);
   return (
     <>
-      <div className="m-auto py-4 w-[90%]">
+      <div className="m-auto py-4 w-[90%] md:w-[80%] md:mt-5">
 
         <div
           className="relative overflow-hidden rounded-xl shadow-lg h-60 md:h-96 "
@@ -93,10 +101,9 @@ const NavSilder = () => {
                 key={slide.id}
                 className={`w-full flex-shrink-0 flex items-center justify-center ${slide.bgColor} text-white`}
               >
-                <div className="text-center p-6">
-                  <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
-                  <p className="text-xl">{slide.description}</p>
-                </div>
+                <a href={Slice.address} className='w-full h-full flex flex-col items-center justify-center'>
+                  <img src={slide.img} alt="" className='w-full h-full object-cover' />
+                </a>
               </div>
             ))}
           </div>
@@ -135,14 +142,14 @@ const NavSilder = () => {
         </div>
 
       </div>
-      <div className="w-[90%] h-auto py-2 m-auto flex flex-col justify-between">
+      <div className="w-[90%] md:w-[80%] md:mt-5 h-auto py-2 m-auto flex flex-col justify-between">
         <h1 className="text-2xl font-bold">Recommendation Brands</h1>
-        <div className="w-full h-[140px] overflow-x-scroll scroll-smooth flex items-center gap-4 snap-x snap-proximity scrollbar-none">
-          {recommendationBrand.map((brand) => (
-            <div key={brand.id} className="min-w-[100px] min-h-[100px] bg-gray-200 rounded-full flex flex-col items-center justify-center p-2 text-center crusor-pointer">
-              <h2 className="text-sm font-semibold snap-center">{brand.title}</h2>
-              <p className="text-xs">{brand.description}</p>
-            </div>
+        <div className="w-full h-[150px] overflow-x-scroll scroll-smooth flex items-center gap-6 snap-x snap-proximity scrollbar-none mt-4">
+          {recommendationBrand.map((brand, index) => (
+              <a key={index} className="min-w-[80px] min-h-[130px] max-w-[130px] max-h-[100px] rounded-2xl flex flex-col gap-2 cursor-pointer items-center justify-center text-center crusor-pointer">
+                <img src={brand.img} alt="" className='w-20 h-20 object-cover rounded-full'/>
+                <p>{brand.title}</p>
+              </a>
           ))}
         </div>
       </div>
