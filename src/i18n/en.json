@@ -1,0 +1,23 @@
+{
+    "header": {
+        "Categories": "Categories",
+        "Login": "Login",
+        "Logout": "Logout",
+        "Sorted by": "Sorted by",
+        "Basket": "Basket",
+        "Search": "Search"
+    },
+    "headerEleenments": {
+        "GoodsOfTheWeek": "Goods of the week",
+        "Electronics": "Electronics",
+        "Clothing": "Clothing",
+        "Home": "Home",
+        "Books": "Books",
+        "Toys": "Toys",
+        "Sports": "Sports",
+        "Beauty": "Beauty",
+        "Health": "Health",
+        "Automotive": "Automotive",
+        "Grocery": "Grocery"
+    }
+}

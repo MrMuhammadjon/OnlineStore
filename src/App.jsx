@@ -1,7 +1,5 @@
-import AnimatedNav from "./components/Navbar.jsx";
-import Navbar from "./components/Navbar.jsx";
 import { useSelector } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import MainLayout from "./layout/MainLayout.jsx";
 import Home from "./pages/Home.jsx";
 import Category from "./pages/Category.jsx";
@@ -10,49 +8,49 @@ import Profile from "./pages/Profile.jsx";
 import Wishes from "./pages/Wishes.jsx";
 import Cart from "./pages/Cart.jsx";
 
-
+// Protected route component
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  return isAuthenticated ? children : <Navigate to="/" replace />;
+};
 
 export default function App() {
-  const { isAuthenticated } = useSelector((state) => state.auth) // Assuming you have a useAuth hook to check authentication status
-  console.log(isAuthenticated);
-
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout />,
       children: [
-        {
-          path: "/",
-          element: <Home />,
+        { index: true, element: <Home /> },
+        { path: "category", element: <Category /> },
+        { path: "search", element: <Search /> },
+        { 
+          path: "profile", 
+          element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          ) 
         },
-        {
-          path: "/category",
-          element: <Category />,
+        { 
+          path: "wishes", 
+          element: (
+            <ProtectedRoute>
+              <Wishes />
+            </ProtectedRoute>
+          ) 
         },
-        {
-          path: "/search",
-          element: <Search />,
-        },
-        {
-          path: "/Profile",
-          element: <Profile />,
-        },
-        {
-          path: "/wishes", 
-          element: <Wishes />,
-        },
-        {
-          path: "/cart",
-          element: <Cart />,
+        { 
+          path: "cart", 
+          element: (
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          ) 
         },
       ]
     }
-  ])
+  ]);
 
-  return (
-    <>
-      <Navbar />
-      <RouterProvider router={router}/>
-    </>
-  );
+  return <RouterProvider router={router} />;
+
 }
