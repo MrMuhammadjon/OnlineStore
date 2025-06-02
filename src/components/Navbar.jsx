@@ -54,7 +54,7 @@ const Navbar = () => {
   return (
     <>
       <div className="w-full h-8 bg-gray-200 flex items-center justify-center px-4">
-        <div className="w-[85%] flex items-center justify-between">
+        <div className="w-[90%] md:w-[85%] flex items-center justify-between">
           <div className="flex items-center gap-2 text-sm text-black">
             <Search className="w-4 h-4" />
             <select
@@ -86,13 +86,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* <nav className="flex gap-4 p-4 bg-white shadow text-sm text-gray-700">
-        <NavLink to={`/home?location=${selectedLocation}`}>{t('headerEleenments.Home')}</NavLink>
-        <NavLink to={`/products?location=${selectedLocation}`}>{t('headerEleenments.Toys')}</NavLink>
-        <NavLink to={`/about?location=${selectedLocation}`}>{t('headerEleenments.Books')}</NavLink>
-      </nav> */}
-
       <div className="w-full py-5 bg-whitek flex items-center flex-col justify-center">
         <div className="w-[85%] flex items-center justify-between gap-4" id='Head-Top'>
           <div className="flex-1">

@@ -37,9 +37,7 @@ export default function App() {
         { 
           path: "wishes", 
           element: (
-            <ProtectedRoute>
               <Wishes />
-            </ProtectedRoute>
           ) 
         },
         { 
