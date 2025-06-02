@@ -3,6 +3,9 @@ import { Plus, Heart } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useAppContext } from "../context/AppContext";
 import { useTranslation } from 'react-i18next';
+import { useEffect } from "react";
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 const Products = () => {
     const [counts, setCounts] = useState({});
@@ -21,6 +24,18 @@ const Products = () => {
 
     const { t, i18n } = useTranslation();
 
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+    }, []);
+
+    useEffect(() => {
+        AOS.refresh();
+    }, [products]);
+
+
 
 
     return (
@@ -33,7 +48,7 @@ const Products = () => {
                         const count = counts[product.id] || 0;
 
                         return (
-                            <div key={product.id} className="border border-gray-500/20 rounded-2xl px-3 py-2 bg-white hover:shadow-lg transition-shadow duration-300" data-aos="fade-up">
+                            <div data-aos="zoom-in" key={product.id} className="border border-gray-500/20 rounded-2xl px-3 py-2 bg-white hover:shadow-lg transition-shadow duration-300 z-20">
                                 <button
                                     onClick={(e) => {
                                         e.preventDefault();
@@ -67,13 +82,12 @@ const Products = () => {
                                         <div className="text-indigo-500">
                                             {!cartItems[product.id] ? (
                                                 <button
-                                                    className="flex items-center gap-1 bg-indigo-100 border border-indigo-300 w-[64px] h-[34px] rounded text-indigo-600 text-sm"
+                                                    className="flex items-center justify-center gap-1 bg-indigo-100 border border-indigo-300 w-[64px] h-[34px] rounded text-indigo-600 text-sm"
                                                     onClick={() => {
                                                         setCounts(prev => ({ ...prev, [product.id]: 1 }));
                                                         toast.success(`${product.title} savatga qo'shildi!`);
                                                     }}
                                                 >
-                                                    <Plus size={16} />
                                                     Qo‘shish
                                                 </button>
                                             ) : (
