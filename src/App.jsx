@@ -7,7 +7,7 @@ import Search from "./pages/Search.jsx";
 import Profile from "./pages/Profile.jsx";
 import Wishes from "./pages/Wishes.jsx";
 import Cart from "./pages/Cart.jsx";
-
+import Login from "./pages/LoginPage.jsx";
 // Protected route component
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -26,6 +26,7 @@ export default function App() {
         { index: true, element: <Home /> },
         { path: "category", element: <Category /> },
         { path: "search", element: <Search /> },
+        { path: "/login", element: <Login /> },
         { 
           path: "profile", 
           element: (

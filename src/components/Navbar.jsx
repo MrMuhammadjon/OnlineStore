@@ -2,8 +2,13 @@ import { BoxIcon, CatIcon, Heart, LanguagesIcon, Search, ShoppingBag, User } fro
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAppContext } from '../context/AppContext';
+import 'boxicons'
+
 
 const Navbar = () => {
+
+  const { user } = useAppContext()
 
 
   const Location = [
@@ -24,8 +29,8 @@ const Navbar = () => {
   const [selectedLocation, setSelectedLocation] = useState(Location[0].code);
   const [selectedLanguage, setSelectedLanguage] = useState(language[0].code);
 
-  const { t, i18n } = useTranslation(); // ✅ Destructuring with {}
-
+  const { t, i18n } = useTranslation();
+  
   const handleChangeLocation = (e) => {
     setSelectedLocation(e.target.value);
   };
@@ -133,10 +138,19 @@ const Navbar = () => {
             </div>
           </div>
           <div className="flex-1 flex items-center justify-end gap-4">
-            <NavLink className="flex items-center gap-1 text-sm text-gray-700 hover:text-purple-500 transition duration-300 relative" to="/login">
-              <User />
-              <span>{t('header.Login')}</span>
-            </NavLink>
+
+            {!user ? (
+
+              <NavLink className="flex items-center gap-1 text-sm text-gray-700 hover:text-purple-500 transition duration-300 relative" to="/login">
+                <User />
+                <span>{t('header.Login')}</span>
+              </NavLink>
+            ): (
+              <NavLink className="flex items-center gap-1 text-sm text-gray-700 hover:text-purple-500 transition duration-300 relative" to="/profile">
+                <box-icon type='solid' name='user'></box-icon>
+                <span className="absolute -top-3 -right-3 bg-purple-600 text-white px-1 rounded-sm">0</span>
+              </NavLink>
+            )}
 
             <NavLink className="flex items-center gap-1 text-sm text-gray-700 hover:text-purple-500 transition duration-300 relative" to="/wishes">
               <Heart />

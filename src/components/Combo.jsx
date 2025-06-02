@@ -1,9 +1,11 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
+import { useAppContext } from '../context/AppContext';
 
 const Combo = () => {
     const { t } = useTranslation();
+    const { user } = useAppContext()
 
     const combo = [
         {
@@ -32,15 +34,21 @@ const Combo = () => {
     return (
         <>
             <div className="w-[90%] md:w-[85%] m-auto mt-8">
-                <h1 className="text-xl font-sans mb-4">{t('Combo.Combo')}</h1>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {combo.map((item, index) => (
-                        <NavLink key={index} className="flex items-center justify-center gap-2 borde cursor-pointer rounded-md px-4 py-2 bg-gray-200 hover:bg-gray-100 transition">
-                            <img className='w-10' src={item.image} alt="" />
-                            <h1>{t(`Combo.${item.title}`)}</h1>
-                        </NavLink>
-                    ))}
-                </div>
+                {!user ? (
+                    <div className=""></div>
+                ) : (
+                    <div className="">
+                        <h1 className="text-xl font-sans mb-4">{t('Combo.Combo')}</h1>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {combo.map((item, index) => (
+                                <NavLink key={index} className="flex items-center justify-center gap-2 borde cursor-pointer rounded-md px-4 py-2 bg-gray-200 hover:bg-gray-100 transition">
+                                    <img className='w-10' src={item.image} alt="" />
+                                    <h1>{t(`Combo.${item.title}`)}</h1>
+                                </NavLink>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </>
     )

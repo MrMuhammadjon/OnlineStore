@@ -1,92 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import axios from "axios"
-import { Minus, MoveLeft, Plus, Star, StarHalf, StarHalfIcon } from 'lucide-react';
-import { Heart } from 'lucide-react';
-import 'boxicons'
+import React, { useState } from 'react';
+import { Plus, Heart } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useAppContext } from "../context/AppContext"; // pathingizga qarab moslang
-
+import { useAppContext } from "../context/AppContext";
+import { useTranslation } from 'react-i18next';
 
 const Products = () => {
     const [counts, setCounts] = useState({});
     const [showFavorites, setShowFavorites] = useState(false);
     const [favorites, setFavorites] = useState({});
 
-    const { products } = useAppContext();
+    const { products, cartItems, addOnLimiProduct } = useAppContext();
+
+    const toggleFavorite = (id) => {
+        setFavorites(prev => ({ ...prev, [id]: !prev[id] }));
+    };
 
     const displayedProducts = showFavorites
         ? products.filter(product => favorites[product.id])
         : products;
 
+    const { t, i18n } = useTranslation();
+
+
 
     return (
         <>
+
             <div className='w-[90%] md:w-[85%] m-auto mt-5'>
-                <h1 className="text-xl font-bold mb-4 tetx-red-200">Mahsulotlar</h1>
+                <h1 className="text-xl font-bold mb-4 ">{t('menu.newArrivals')}</h1>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {displayedProducts.map(product => {
                         const count = counts[product.id] || 0;
-                        const displayedProducts = showFavorites
-                            ? products.filter(product => favorites[product.id])
-                            : products;
-
 
                         return (
-                            <div key={product.id} className="border border-gray-500/20 rounded-2xl md:px-4 px-3 py-2 bg-white min-w-40 max-w-56 w-full hover:shadow-lg transition-shadow duration-300">
+                            <div key={product.id} className="border border-gray-500/20 rounded-2xl px-3 py-2 bg-white hover:shadow-lg transition-shadow duration-300" data-aos="fade-up">
                                 <button
-                                    onClick={() => setShowFavorites(prev => !prev)}
-                                    className={`flex items-center gap-1 px-3 py-1 border rounded-md text-sm ${showFavorites ? 'bg-red-100 text-red-600 border-red-300' : 'text-gray-600 border-gray-300'
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        toggleFavorite(product.id);
+                                    }}
+                                    className={`flex items-center gap-1 px-3 py-1 border rounded-md text-sm ${favorites[product.id] ? 'bg-red-100 text-red-600 border-red-300' : 'text-gray-600 border-gray-300'
                                         }`}
                                 >
-                                    <Heart fill={showFavorites ? 'red' : 'none'} className="w-4 h-4" />
+                                    <Heart fill={favorites[product.id] ? 'red' : 'none'} className="w-4 h-4" />
                                 </button>
-                                <div className="group cursor-pointer flex items-center justify-center px-2">
-                                    <img className="group-hover:scale-105 transition max-w-26 md:max-w-36" src={product.thumbnail} alt={product.title} />
+
+                                <div className="flex items-center justify-center px-2">
+                                    <img className="max-w-32" src={product.thumbnail} alt={product.title} />
                                 </div>
-                                <div className="text-gray-500/60 text-sm">
+
+                                <div className="text-gray-500/60 text-sm mt-2">
                                     <p>{product.category}</p>
-                                    <p className="text-gray-700 font-medium text-lg truncate w-full">{product.title}</p>
-                                    <p>
-                                        {product.description.length > 10 ? `${product.description.slice(0, 25)}...` : product.description}
-                                    </p>
-                                    <div className="flex items-center gap-0.5 text-sm">
+                                    <p className="text-gray-700 font-medium text-lg truncate">{product.title}</p>
+                                    <p>{product.description.length > 25 ? `${product.description.slice(0, 25)}...` : product.description}</p>
+                                    <div className="flex items-center gap-1 text-sm mt-1">
                                         <box-icon type='solid' name='star' color='yellow' width='12px'></box-icon>
                                         <p>({product.rating})</p>
                                     </div>
 
                                     <div className="flex items-end justify-between mt-3">
-                                        <p className="md:text-xl text-base font-medium text-indigo-500 flex flex-col">
-                                            ${product.discountPrice || product.price} <span className="text-gray-500/60 md:text-sm text-xs line-through">${product.price}</span>
+                                        <p className="text-indigo-500 font-medium">
+                                            ${product.discountPrice || product.price}
+                                            <span className="line-through text-xs text-gray-500/60 ml-1">${product.price}</span>
                                         </p>
 
                                         <div className="text-indigo-500">
-                                            {count === 0 ? (
+                                            {!cartItems[product.id] ? (
                                                 <button
-                                                    className="flex items-center justify-center gap-1 bg-indigo-100 border border-indigo-300 md:w-[80px] w-[64px] h-[34px] rounded text-indigo-600 font-medium"
+                                                    className="flex items-center gap-1 bg-indigo-100 border border-indigo-300 w-[64px] h-[34px] rounded text-indigo-600 text-sm"
                                                     onClick={() => {
                                                         setCounts(prev => ({ ...prev, [product.id]: 1 }));
-                                                        toast.success(`${product.title} added to cart!`);
+                                                        toast.success(`${product.title} savatga qo'shildi!`);
                                                     }}
                                                 >
-                                                    <Plus />
-                                                    Add
+                                                    <Plus size={16} />
+                                                    Qo‘shish
                                                 </button>
-
                                             ) : (
-                                                <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-indigo-500/25 rounded select-none">
+                                                <div className="flex items-center gap-2 w-20 h-[34px] bg-indigo-500/25 rounded">
                                                     <button onClick={() =>
                                                         setCounts(prev => ({
                                                             ...prev,
                                                             [product.id]: Math.max((prev[product.id] || 0) - 1, 0)
                                                         }))
-                                                    } className="cursor-pointer text-md px-2 h-full">-</button>
-                                                    <span className="w-5 text-center">{count}</span>
+                                                    } className="px-2">-</button>
+                                                    <span>{cartItems[product.id]}</span>
                                                     <button onClick={() =>
                                                         setCounts(prev => ({
                                                             ...prev,
                                                             [product.id]: (prev[product.id] || 0) + 1
                                                         }))
-                                                    } className="cursor-pointer text-md px-2 h-full">+</button>
+                                                    } className="px-2">+</button>
                                                 </div>
                                             )}
                                         </div>
@@ -95,10 +99,13 @@ const Products = () => {
                             </div>
                         );
                     })}
-
                 </div>
             </div>
+            <div className="w-full flex items-center justify-center mt-5">
+                <button className='py-2 px-4 bg-purple-500 rounded-2xl text-white cursor-pointer mt-10' onClick={() => addOnLimiProduct()}>Yana Ko'rsatish 10</button>
+            </div>
         </>
+
     );
 };
 

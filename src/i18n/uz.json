@@ -33,5 +33,14 @@
         "Combo1": "Ona va bola",
         "Combo2": "Elektronika va gadjetlar",
         "Combo3": "Moda va kiyim-kechak"
+    },
+    "menu":{
+        "forYou": "Siz uchun",
+        "newArrivals": "Yangi kelganlar",
+        "bestSellers": "Eng sotilganlar",
+        "onSale": "Sotuvda",
+        "forMen": "Erkaklar uchun",
+        "trending": "Trendlarda",
+        "forWomen": "Ayollar uchun"
     }
 }

@@ -7,11 +7,11 @@
         "Basket": "Basket",
         "Search": "Search"
     },
-    "headerEleenments": {
-        "GoodsOfTheWeek": "Goods of the week",
+    "headerElements": {
+        "GoodsOfTheWeek": "Products of the Week",
         "Electronics": "Electronics",
         "Clothing": "Clothing",
-        "Home": "Home",
+        "Home": "Home Appliances",
         "Books": "Books",
         "Toys": "Toys",
         "Sports": "Sports",
@@ -19,8 +19,7 @@
         "Health": "Health",
         "Automotive": "Automotive",
         "Grocery": "Grocery",
-        "Other categories":"Other categories"
-
+        "Other categories": "Other categories"
     },
     "locationSelector": {
         "uzb": "Uzbekistan",
@@ -30,9 +29,18 @@
         "esp": "Spain"
     },
     "Combo": {
-        "Combo": "Combo",
-        "Combo1": "Mother and Baby",
+        "Combo": "Special Offers",
+        "Combo1": "Mother and Child",
         "Combo2": "Electronics and Gadgets",
         "Combo3": "Fashion and Clothing"
+    },
+    "menu": {
+        "forYou": "For You",
+        "newArrivals": "New Arrivals",
+        "bestSellers": "Best Sellers",
+        "onSale": "On Sale",
+        "forMen": "For Men",
+        "trending": "Trending",
+        "forWomen": "For Women"
     }
 }
