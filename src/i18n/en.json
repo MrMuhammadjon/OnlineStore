@@ -19,5 +19,12 @@
         "Health": "Health",
         "Automotive": "Automotive",
         "Grocery": "Grocery"
+    },
+    "locationSelector": {
+        "uzb": "Uzbekistan",
+        "usa": "USA",
+        "deu": "Germany",
+        "fra": "France",
+        "esp": "Spain"
     }
 }

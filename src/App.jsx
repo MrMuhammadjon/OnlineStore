@@ -14,6 +14,9 @@ const ProtectedRoute = ({ children }) => {
   return isAuthenticated ? children : <Navigate to="/" replace />;
 };
 
+console.log('ProtectedRoute component loaded');
+
+
 export default function App() {
   const router = createBrowserRouter([
     {

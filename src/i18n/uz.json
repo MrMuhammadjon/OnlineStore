@@ -1,23 +1,30 @@
 {
     "header": {
-        "Categories": "Categories",
-        "Login": "Login",
-        "Logout": "Logout",
-        "Sorted by": "Sorted by",
-        "Basket": "Basket",
-        "Search": "Search"
+        "Categories": "Kategoriyalar",
+        "Login": "Kirish",
+        "Logout": "Chiqish",
+        "Sorted by": "Saralangan",
+        "Basket": "Savat",
+        "Search": "Qidiruv"
     },
     "headerEleenments": {
-        "GoodsOfTheWeek": "Goods of the week",
-        "Electronics": "Electronics",
-        "Clothing": "Clothing",
-        "Home": "Home",
-        "Books": "Books",
-        "Toys": "Toys",
-        "Sports": "Sports",
-        "Beauty": "Beauty",
-        "Health": "Health",
-        "Automotive": "Automotive",
-        "Grocery": "Grocery"
+        "GoodsOfTheWeek": "Hafta mahsulotlari",
+        "Electronics": "Elektronika",
+        "Clothing": "Kiyim-kechak",
+        "Home": "Uy jihozlari",
+        "Books": "Kitoblar",
+        "Toys": "Oʻyinchoqlar",
+        "Sports": "Sport",
+        "Beauty": "Goʻzallik",
+        "Health": "Sogʻliq",
+        "Automotive": "Avtomobil",
+        "Grocery": "Oziq-ovqat"
+    },
+    "locationSelector": {
+        "uzb": "Oʻzbekiston",
+        "usa": "AQSH",
+        "deu": "Germaniya",
+        "fra": "Fransiya",
+        "esp": "Ispaniya"
     }
-} 
+}
