@@ -19,7 +19,7 @@
         "Health": "Health",
         "Automotive": "Automotive",
         "Grocery": "Grocery",
-        "Other categories":"Boshqa kategoriyalar"
+        "Other categories":"Other categories"
 
     },
     "locationSelector": {
@@ -28,5 +28,11 @@
         "deu": "Germany",
         "fra": "France",
         "esp": "Spain"
+    },
+    "Combo": {
+        "Combo": "Combo",
+        "Combo1": "Mother and Baby",
+        "Combo2": "Electronics and Gadgets",
+        "Combo3": "Fashion and Clothing"
     }
 }

@@ -19,7 +19,7 @@
         "Health": "Sogʻliq",
         "Automotive": "Avtomobil",
         "Grocery": "Oziq-ovqat",
-        "Other categories":"Boshqa kategoriyalar"
+        "Other categories": "Boshqa kategoriyalar"
     },
     "locationSelector": {
         "uzb": "Oʻzbekiston",
@@ -27,5 +27,11 @@
         "deu": "Germaniya",
         "fra": "Fransiya",
         "esp": "Ispaniya"
+    },
+    "Combo": {
+        "Combo": "Maxsus takliflar",
+        "Combo1": "Ona va bola",
+        "Combo2": "Elektronika va gadjetlar",
+        "Combo3": "Moda va kiyim-kechak"
     }
 }
