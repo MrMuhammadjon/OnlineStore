@@ -7,7 +7,7 @@
         "Basket": "Savat",
         "Search": "Qidiruv"
     },
-    "headerEleenments": {
+    "headerElements": {
         "GoodsOfTheWeek": "Hafta mahsulotlari",
         "Electronics": "Elektronika",
         "Clothing": "Kiyim-kechak",
@@ -19,7 +19,7 @@
         "Health": "Sogʻliq",
         "Automotive": "Avtomobil",
         "Grocery": "Oziq-ovqat",
-        "Other categories": "Boshqa kategoriyalar"
+        "Othercategories": "Boshqa kategoriyalar"
     },
     "locationSelector": {
         "uzb": "Oʻzbekiston",

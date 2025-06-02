@@ -1,6 +1,6 @@
 'use strict';
 import { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import axios, { all } from 'axios';
 import toast from 'react-hot-toast';
 
 export const AppContext = createContext();
@@ -8,26 +8,42 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isSeller, setIsSeller] = useState(false);
-  const [allProducts, setAllProducts] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [addOnLimit, setAddOnLimit] = useState(10);
   const [showUserLogin, setShowUserLogin] = useState(false);
+  const [LimitProducts, setLimitProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Mahsulotlarni chaqirish
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await axios.get(`https://dummyjson.com/products?limit=99`);
+        setAllProducts(response.data.products);
+      } catch (error) {
+        console.error("Xatolik:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getProducts();
+  }, []);
+
   useEffect(() => {
     const getProducts = async () => {
       try {
         const response = await axios.get(`https://dummyjson.com/products?limit=${addOnLimit}`);
-        setAllProducts(response.data.products);
+        setLimitProducts(response.data.products);
       } catch (error) {
         console.error("Xatolik:", error);
       }
     };
 
     getProducts();
-  }, [addOnLimit]); // ✅ addOnLimit kiritildi
+  }, [addOnLimit]);
 
-  // Savatchaga qo‘shish
   const addToCart = (itemId) => {
     let cartData = { ...cartItems };
     if (cartData[itemId]) {
@@ -39,7 +55,6 @@ export const AppContextProvider = ({ children }) => {
     toast.success("Mahsulot savatchaga qo'shildi");
   };
 
-  // Yangilash
   const UpdateCartItem = (itemId, quantity) => {
     let cartData = { ...cartItems };
     cartData[itemId] = quantity;
@@ -47,7 +62,6 @@ export const AppContextProvider = ({ children }) => {
     toast.success("Mahsulot savatchada yangilandi");
   };
 
-  // O‘chirish
   const RemoveFromCart = (itemId) => {
     let cartData = { ...cartItems };
     if (cartData[itemId]) {
@@ -60,7 +74,6 @@ export const AppContextProvider = ({ children }) => {
     setCartItems(cartData);
   };
 
-  // Ko‘proq mahsulot yuklash
   const addOnLimiProduct = () => {
     setAddOnLimit(prev => prev + 10);
     toast.success(`Yana 10 ta mahsulot yuklandi`);
@@ -72,14 +85,16 @@ export const AppContextProvider = ({ children }) => {
       setUser,
       isSeller,
       setIsSeller,
-      products: allProducts,
+      products: LimitProducts,
       cartItems,
       addToCart,
       UpdateCartItem,
       RemoveFromCart,
       addOnLimiProduct,
       showUserLogin,
-      setShowUserLogin
+      setShowUserLogin,
+      allProducts: allProducts,
+      loading
     }}>
       {children}
     </AppContext.Provider>

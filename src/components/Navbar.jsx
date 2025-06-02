@@ -168,19 +168,15 @@ const Navbar = () => {
         <div className="w-[85%] flex items-center justify-center mt-4 gap-4">
           <div className="flex-0.5">
             <NavLink to="/" className="text-m font-bold text-purple-900">
-              {t('headerEleenments.Other categories')}
+            {t('headerElements.Othercategories')}
             </NavLink>
           </div>
           <div className="flex-1 flex items-center justify-end gap-1">
             {
               headerLinks.map((link) => (
-                <NavLink
-                  key={link.key}
-                  to={link.to}
-                  className={`text-sm text-gray-700 hover:text-purple-500 transition duration-300 ${link.margin ? "mx-4" : ""
-                    }`}
-                >
-                  {t(`headerEleenments.${link.key}`)}
+                
+                <NavLink key={link.key} to={link.to} className={`text-sm text-gray-700 hover:text-purple-500 transition duration-300 ${link.margin ? "mx-4" : "" }`}>
+                  {t(`headerElements.${link.key}`)}
                 </NavLink>
               ))
             }

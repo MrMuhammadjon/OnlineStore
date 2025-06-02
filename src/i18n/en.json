@@ -19,7 +19,7 @@
         "Health": "Health",
         "Automotive": "Automotive",
         "Grocery": "Grocery",
-        "Other categories": "Other categories"
+        "Othercategories": "Other categories"
     },
     "locationSelector": {
         "uzb": "Uzbekistan",
@@ -42,5 +42,6 @@
         "forMen": "For Men",
         "trending": "Trending",
         "forWomen": "For Women"
+
     }
 }
