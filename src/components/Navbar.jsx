@@ -36,6 +36,21 @@ const Navbar = () => {
     i18n.changeLanguage(newLang);
   };
 
+  const headerLinks = [
+    { to: "/weekly-goods", key: "GoodsOfTheWeek" },
+    { to: "/electronics", key: "Electronics", margin: true },
+    { to: "/clothing", key: "Clothing" },
+    { to: "/home", key: "Home", margin: true },
+    { to: "/books", key: "Books" },
+    { to: "/toys", key: "Toys", margin: true },
+    { to: "/sports", key: "Sports" },
+    { to: "/beauty", key: "Beauty", margin: true },
+    { to: "/health", key: "Health" },
+    { to: "/auto", key: "Automotive", margin: true },
+    { to: "/grocery", key: "Grocery" }
+  ];
+
+
   return (
     <>
       <div className="w-full h-8 bg-gray-200 flex items-center justify-center px-4">
@@ -78,7 +93,7 @@ const Navbar = () => {
         <NavLink to={`/about?location=${selectedLocation}`}>{t('headerEleenments.Books')}</NavLink>
       </nav> */}
 
-      <div className="w-full py-3 bg-whitek flex items-center justify-center">
+      <div className="w-full py-5 bg-whitek flex items-center flex-col justify-center">
         <div className="w-[85%] flex items-center justify-between gap-4" id='Head-Top'>
           <div className="flex-1">
             <a data-v-3edd7d52="" data-v-78c72b34="" href="/" aria-current="page" className="ui-link logo-link exact-active-link active-link" data-test-id="link__logo"><svg data-v-78c72b34="" width="240" height="" viewBox="0 0 215 32" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Uzum" className="ui-icon  logo">
@@ -124,7 +139,7 @@ const Navbar = () => {
               </form>
             </div>
           </div>
-          <div className="flex-1 flex items-center justify-center gap-4">
+          <div className="flex-1 flex items-center justify-end gap-4">
             <NavLink className="flex items-center gap-1 text-sm text-gray-700 hover:text-purple-500 transition duration-300 relative" to="/login">
               <User />
               <span>{t('header.Login')}</span>
@@ -142,7 +157,27 @@ const Navbar = () => {
               <span className="absolute -top-3 right-0 bg-purple-600 text-white px-1 rounded-sm">0</span>
             </NavLink>
           </div>
-
+        </div>
+        <div className="w-[85%] flex items-center justify-center mt-4 gap-4">
+          <div className="flex-0.5">
+            <NavLink to="/" className="text-m font-bold text-purple-900">
+              {t('headerEleenments.Other categories')}
+            </NavLink>
+          </div>
+          <div className="flex-1 flex items-center justify-end gap-1">
+            {
+              headerLinks.map((link) => (
+                <NavLink
+                  key={link.key}
+                  to={link.to}
+                  className={`text-sm text-gray-700 hover:text-purple-500 transition duration-300 ${link.margin ? "mx-4" : ""
+                    }`}
+                >
+                  {t(`headerEleenments.${link.key}`)}
+                </NavLink>
+              ))
+            }
+          </div>
         </div>
       </div>
 

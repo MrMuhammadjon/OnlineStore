@@ -1,12 +1,12 @@
 import React from 'react'
 import { Heart, Search } from 'lucide-react'
-import HomeSlider from '../components/HomeSlider'
+import AutoCarousel from '../components/AutoCarousel'
 import Products from '../components/Products'
 
 const Home = () => {
     return (
         <>
-            {/* <HomeSlider /> */}
+            <AutoCarousel />
             {/* <Products /> */}
         </>
     )

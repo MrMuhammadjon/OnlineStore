@@ -18,7 +18,9 @@
         "Beauty": "Beauty",
         "Health": "Health",
         "Automotive": "Automotive",
-        "Grocery": "Grocery"
+        "Grocery": "Grocery",
+        "Other categories":"Boshqa kategoriyalar"
+
     },
     "locationSelector": {
         "uzb": "Uzbekistan",

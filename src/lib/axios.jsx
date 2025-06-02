@@ -17,7 +17,7 @@ const Products = () => {
 
   return (
     <>
-      <h1 className="text-xl font-bold">Mahsulotlar</h1>
+      <h1 classNameName="text-xl font-bold">Mahsulotlar</h1>
     </>
   );
 };

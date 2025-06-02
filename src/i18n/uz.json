@@ -18,7 +18,8 @@
         "Beauty": "Goʻzallik",
         "Health": "Sogʻliq",
         "Automotive": "Avtomobil",
-        "Grocery": "Oziq-ovqat"
+        "Grocery": "Oziq-ovqat",
+        "Other categories":"Boshqa kategoriyalar"
     },
     "locationSelector": {
         "uzb": "Oʻzbekiston",
