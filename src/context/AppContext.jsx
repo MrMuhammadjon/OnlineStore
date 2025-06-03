@@ -6,7 +6,12 @@ import toast from 'react-hot-toast';
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+  
   const [isSeller, setIsSeller] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [addOnLimit, setAddOnLimit] = useState(10);
@@ -16,7 +21,7 @@ export const AppContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   console.log(user, setUser);
-  
+
 
 
   useEffect(() => {

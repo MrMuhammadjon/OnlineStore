@@ -1,10 +1,12 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
-import { set } from 'react-hook-form'
+import { useDispatch } from 'react-redux'; // Redux dispatch ni import qilish
+import { login } from '../features/auth/authSlice';// Reduxdan login funksiyasini import qilish
 
 const LoginPage = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch(); // Dispatch funksiyasini olish
   const { setUser, setShowUserLogin } = useAppContext()
 
   const [email, setEmail] = React.useState("")
@@ -12,10 +14,18 @@ const LoginPage = () => {
   const [name, setName] = React.useState("")
 
   const onSubmit = (e) => {
-    setShowUserLogin(true)
     e.preventDefault()
-    setUser({ email, password, name })
-    navigate("/")
+
+    // 1. Contextga foydalanuvchi ma'lumotlarini saqlash
+    const userData = { email, password, name };
+    setUser(userData);
+    setShowUserLogin(true);
+
+    // 2. Redux store ga foydalanuvchini saqlash (login qilish)
+    dispatch(login(userData));
+
+    // 3. Savatchaga yo'naltirish
+    navigate("/cart");
   }
 
   return (

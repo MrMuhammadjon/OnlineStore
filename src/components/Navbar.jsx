@@ -164,7 +164,11 @@ const Navbar = () => {
             <NavLink className="flex items-center gap-1 text-sm text-gray-700 hover:text-purple-500 transition duration-300 relative" to="/cart">
               <ShoppingBag />
               <span>{t('header.Basket')}</span>
-              <span className="absolute -top-3 right-0 bg-purple-600 text-white px-1 rounded-sm">0</span>
+              {!user ? 
+              (<></>) : (
+                <span className="absolute -top-3 right-0 bg-purple-600 text-white px-1 rounded-sm">0</span>
+              )
+              }
             </NavLink>
           </div>
         </div>
