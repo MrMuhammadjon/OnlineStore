@@ -30,8 +30,8 @@ const Banner = () => {
 
     const { t, i18n } = useTranslation();
 
-    const categories = Array.from(new Set(allProducts.map(product => product.category)));
-    console.log(categories);
+    // const categories = Array.from(new Set(allProducts.map(product => product.category)));
+    // console.log(categories);
 
     if (loading) {
         return (

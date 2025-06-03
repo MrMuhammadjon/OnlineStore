@@ -15,6 +15,9 @@ export const AppContextProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  console.log(user, setUser);
+  
+
 
   useEffect(() => {
     const getProducts = async () => {

@@ -14,7 +14,7 @@ const Products = () => {
 
     const { products, cartItems, addOnLimiProduct } = useAppContext();
 
-    console.log(products);
+    // console.log(products);
     
 
     const toggleFavorite = (id) => {

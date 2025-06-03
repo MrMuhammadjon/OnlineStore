@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 import 'boxicons'
 
 
 const Navbar = () => {
 
   const { user } = useAppContext()
+  const navigate = useNavigate();
 
 
   const Location = [
@@ -56,6 +58,7 @@ const Navbar = () => {
   ];
 
 
+
   return (
     <>
       <div className="w-full h-8 bg-gray-200 flex items-center justify-center px-4">
@@ -91,7 +94,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="w-full py-5 bg-whitek flex items-center flex-col justify-center">
+      <div className="w-full py-5 bg-whitek flex items-center flex-col justify-center md:top-0 md:sticky z-50 bg-white">
         <div className="w-[85%] flex items-center justify-between gap-4" id='Head-Top'>
           <div className="flex-1">
             <a data-v-3edd7d52="" data-v-78c72b34="" href="/" aria-current="page" className="ui-link logo-link exact-active-link active-link" data-test-id="link__logo"><svg data-v-78c72b34="" width="240" viewBox="0 0 215 32" fill="none" xmlns="http://www.w3.org/2000/svg" alt="Uzum" className="ui-icon  logo">
@@ -145,7 +148,7 @@ const Navbar = () => {
                 <User />
                 <span>{t('header.Login')}</span>
               </NavLink>
-            ): (
+            ) : (
               <NavLink className="flex items-center gap-1 text-sm text-gray-700 hover:text-purple-500 transition duration-300 relative" to="/profile">
                 <box-icon type='solid' name='user'></box-icon>
                 <span className="absolute -top-3 -right-3 bg-purple-600 text-white px-1 rounded-sm">0</span>
@@ -168,14 +171,14 @@ const Navbar = () => {
         <div className="w-[85%] flex items-center justify-center mt-4 gap-4">
           <div className="flex-0.5">
             <NavLink to="/" className="text-m font-bold text-purple-900">
-            {t('headerElements.Othercategories')}
+              {t('headerElements.Othercategories')}
             </NavLink>
           </div>
           <div className="flex-1 flex items-center justify-end gap-1">
             {
               headerLinks.map((link) => (
-                
-                <NavLink key={link.key} to={link.to} className={`text-sm text-gray-700 hover:text-purple-500 transition duration-300 ${link.margin ? "mx-4" : "" }`}>
+
+                <NavLink key={link.key} to={link.to} className={`text-sm text-gray-700 hover:text-purple-500 transition duration-300 ${link.margin ? "mx-4" : ""}`}>
                   {t(`headerElements.${link.key}`)}
                 </NavLink>
               ))
@@ -183,8 +186,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-
     </>
   );
 };
