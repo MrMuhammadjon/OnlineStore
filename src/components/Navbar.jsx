@@ -44,17 +44,17 @@ const Navbar = () => {
   };
 
   const headerLinks = [
-    { to: "/weekly-goods", key: "GoodsOfTheWeek" },
-    { to: "/electronics", key: "Electronics", margin: true },
-    { to: "/clothing", key: "Clothing" },
-    { to: "/home", key: "Home", margin: true },
-    { to: "/books", key: "Books" },
-    { to: "/toys", key: "Toys", margin: true },
-    { to: "/sports", key: "Sports" },
-    { to: "/beauty", key: "Beauty", margin: true },
-    { to: "/health", key: "Health" },
-    { to: "/auto", key: "Automotive", margin: true },
-    { to: "/grocery", key: "Grocery" }
+    { to: "/category/weekly-goods", key: "GoodsOfTheWeek" },
+    { to: "/category/electronics", key: "Electronics", margin: true },
+    { to: "/category/clothing", key: "Clothing" },
+    { to: "category/home", key: "Home", margin: true },
+    { to: "/category/books", key: "Books" },
+    { to: "/category/toys", key: "Toys", margin: true },
+    { to: "/category/sports", key: "Sports" },
+    { to: "/category/beauty", key: "Beauty", margin: true },
+    { to: "/category/health", key: "Health" },
+    { to: "/category/auto", key: "Automotive", margin: true },
+    { to: "/category/grocery", key: "Grocery" }
   ];
 
 
