@@ -7,7 +7,6 @@ const ProtectedRoute = ({ children }) => {
   const location = useLocation();
 
   if (!isAuthenticated) {
-    // Login sahifasiga yo'naltirishda joriy manzilni saqlab qolish
     return <Navigate to="/login" replace state={{ from: location }} />;
   }
 

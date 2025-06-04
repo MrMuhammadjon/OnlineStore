@@ -60,6 +60,11 @@
         "updateError": "Yangilashda xatolik yuz berdi",
         "man": "Erkak",
         "women": "Ayol",
-        "surename": "Familiya"
+        "surename": "Familiya",
+        "gender": "Jins",
+        "fatherName": "Ota ismi",
+        "save": "Saqlash",
+        "mycommunities":"Majumotlarim",
+        "birthDate": "Tug'ilgan sana"
     }
 }

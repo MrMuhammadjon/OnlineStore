@@ -3,8 +3,12 @@ import { useState, useEffect  } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
 const UserProfile = () => {
+
+    const { t, i18n } = useTranslation();
+
     const [formData, setFormData] = useState({
         lastName: '',
         birthDate: '',
@@ -47,12 +51,12 @@ const UserProfile = () => {
                 <div className="flex flex-col md:flex-row gap-8">
                     {/* Left Column */}
                     <div className="flex-1">
-                        <h1 className="text-2xl font-bold text-gray-800 mb-6">Majumotlarim</h1>
+                        <h1 className="text-2xl font-bold text-gray-800 mb-6">{t('profile.mycommunities')}</h1>
 
                         <div className="space-y-5">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Familiya <span className="text-red-500">*</span>
+                                    {t('profile.surename')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -66,7 +70,7 @@ const UserProfile = () => {
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Tug'ligan sana
+                                    {t('profile.birthDate')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -80,7 +84,7 @@ const UserProfile = () => {
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Elektron pochta <span className="text-red-500">*</span>
+                                    {t('profile.email')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="email"
@@ -101,16 +105,16 @@ const UserProfile = () => {
                     {/* Right Column */}
                     <div className="flex-1">
                         <div className="flex justify-between items-center mb-6">
-                            <h1 className="text-2xl font-bold text-gray-800">Majumotlarim</h1>
+                            <h1 className="text-2xl font-bold text-gray-800">{t('profile.mycommunities')}</h1>
                             <button onClick={logOut} className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors">
-                                Tizimdan chiqish
+                                {t('profile.logout')}
                             </button>
                         </div>
 
                         <div className="space-y-5">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Ism <span className="text-red-500">*</span>
+                                    {t('profile.name')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -124,7 +128,7 @@ const UserProfile = () => {
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Jins
+                                    {t('profile.gender')}
                                 </label>
                                 <div className="flex space-x-4">
                                     <label className="inline-flex items-center">
@@ -136,7 +140,7 @@ const UserProfile = () => {
                                             onChange={handleChange}
                                             className="text-blue-600 focus:ring-blue-500"
                                         />
-                                        <span className="ml-2">Erak</span>
+                                        <span className="ml-2">{t('profile.man')}</span>
                                     </label>
                                     <label className="inline-flex items-center">
                                         <input
@@ -147,14 +151,14 @@ const UserProfile = () => {
                                             onChange={handleChange}
                                             className="text-blue-600 focus:ring-blue-500"
                                         />
-                                        <span className="ml-2">Ayol</span>
+                                        <span className="ml-2">{t('profile.women')}</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Telefon raqami <span className="text-red-500">*</span>
+                                    {t('profile.phone')} <span className="text-red-500">*</span>
                                 </label>
                                 <div className="flex">
                                     <div className="flex items-center px-4 py-2 border border-r-0 border-gray-300 rounded-l-md bg-gray-50">
@@ -174,7 +178,7 @@ const UserProfile = () => {
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Otasining Ismi
+                                    {t('profile.fatherName')} <span className="text-red-500">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -188,7 +192,7 @@ const UserProfile = () => {
                                 onClick={() => toast.success('Ma\'lumotlar saqlandi')}
                                 className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                             >
-                                Saqlash
+                                {t('profile.save')}
                             </button>
 
                         </div>
