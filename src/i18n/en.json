@@ -4,7 +4,7 @@
         "Login": "Login",
         "Logout": "Logout",
         "Sorted by": "Sorted by",
-        "Basket": "Basket",
+        "": "Basket",
         "Search": "Search"
     },
     "headerElements": {
