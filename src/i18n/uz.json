@@ -42,5 +42,24 @@
         "forMen": "Erkaklar uchun",
         "trending": "Trendlarda",
         "forWomen": "Ayollar uchun"
+    },
+    "profile": {
+        "profile": "Profil",
+        "orders": "Buyurtmalar",
+        "settings": "Sozlamalar",
+        "help": "Yordam",
+        "logout": "Chiqish",
+        "name": "Ism",
+        "email": "Elektron pochta",
+        "phone": "Telefon raqami",
+        "address": "Manzil",
+        "addressPlaceholder": "Manzilni kiriting",
+        "my information": "Mening ma'lumotlarim",
+        "update": "Yangilash",
+        "updateSuccess": "Ma'lumotlar muvaffaqiyatli yangilandi",
+        "updateError": "Yangilashda xatolik yuz berdi",
+        "man": "Erkak",
+        "women": "Ayol",
+        "surename": "Familiya"
     }
 }

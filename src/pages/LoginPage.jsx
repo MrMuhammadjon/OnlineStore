@@ -25,7 +25,7 @@ const LoginPage = () => {
     dispatch(login(userData));
 
     // 3. Savatchaga yo'naltirish
-    navigate("/cart");
+    navigate("/");
   }
 
   return (

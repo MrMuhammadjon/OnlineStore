@@ -8,8 +8,13 @@ import Wishes from "./pages/Wishes.jsx";
 import Cart from "./pages/Cart.jsx";
 import Login from "./pages/LoginPage.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
+import { useAppContext } from "./context/AppContext";
+import UserProfile from "./components/UserProfile.jsx";
+import UserProfilOrders from "./components/UserProfilOrders.jsx"; // assuming this is your custom context
 
 export default function App() {
+  const { loading } = useAppContext();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -25,12 +30,13 @@ export default function App() {
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
-          )
+          ),
+          children: [
+            { index: true, element: <UserProfile /> },
+            { path: "profilorders", element: <UserProfilOrders /> }
+          ]
         },
-        {
-          path: "wishes",
-          element: <Wishes />
-        },
+        { path: "wishes", element: <Wishes /> },
         {
           path: "cart",
           element: (
@@ -38,10 +44,20 @@ export default function App() {
               <Cart />
             </ProtectedRoute>
           )
-        },
+        }
       ]
+
     }
   ]);
+
+  if (loading) {
+    return (
+      <div id="preload" data-preload>
+        <div id="circle"></div>
+        <div id="text">Uzum</div>
+      </div>
+    );
+  }
 
   return <RouterProvider router={router} />;
 }
