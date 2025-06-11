@@ -273,7 +273,7 @@ const Banner = () => {
                         <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent font-medium">Trusted by Experts</span>
                     </div>
                     <h2 className="text-2xl md:text-4xl font-medium mt-2">
-                        Unlock Your Potential with 
+                        {t('menuItems.bannerItem1')}
                             <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Expert Guidance</span>
                             & Proven Results!
                     </h2>

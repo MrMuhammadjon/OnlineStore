@@ -34,14 +34,16 @@
         "Combo2": "Elektronika va gadjetlar",
         "Combo3": "Moda va kiyim-kechak"
     },
-    "menu":{
+    "menu": {
         "forYou": "Siz uchun",
         "newArrivals": "Yangi kelganlar",
         "bestSellers": "Eng sotilganlar",
         "onSale": "Sotuvda",
         "forMen": "Erkaklar uchun",
         "trending": "Trendlarda",
-        "forWomen": "Ayollar uchun"
+        "forWomen": "Ayollar uchun",
+        "showmore": "Yana 10 ta ko'rsatish",
+        "add": "Savatga qo'shish"
     },
     "profile": {
         "profile": "Profil",
@@ -64,7 +66,13 @@
         "gender": "Jins",
         "fatherName": "Ota ismi",
         "save": "Saqlash",
-        "mycommunities":"Majumotlarim",
+        "mycommunities": "Majumotlarim",
         "birthDate": "Tug'ilgan sana"
+    },
+    "menuItems": {
+        "bannerItem1": "Mutaxassis Yordamida",
+        "bannerItem1-2": "O'z Potensialingizni",
+        "bannerItem1-3": "Ochib Oling!",
+        "bannerItem2": "Shaxsiy rejalar, amaliy yordam va o'zi uchun gapirib beradigan natijalar bilan maqsadlaringizga tezroq erishing!"
     }
 }

@@ -1,109 +1,122 @@
 'use strict';
-import { createContext, useState, useContext, useEffect } from 'react';
-import axios, { all } from 'axios';
+import { createContext, useState, useContext, useEffect, useCallback } from 'react';
+import axios from 'axios';
 import toast from 'react-hot-toast';
 
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-
+  // User state with localStorage persistence
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem('user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
-  
+
   const [isSeller, setIsSeller] = useState(false);
-  const [cartItems, setCartItems] = useState({});
+  
+  // Cart state with localStorage persistence
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : {};
+  });
+
   const [addOnLimit, setAddOnLimit] = useState(10);
   const [showUserLogin, setShowUserLogin] = useState(false);
-  const [LimitProducts, setLimitProducts] = useState([]);
+  const [limitedProducts, setLimitedProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  console.log(user, setUser);
-
-
-
+  // Fetch all products once on mount
   useEffect(() => {
-    const getProducts = async () => {
+    const fetchProducts = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(`https://dummyjson.com/products?limit=99`);
         setAllProducts(response.data.products);
-      } catch (error) {
-        console.error("Xatolik:", error);
+        setError(null);
+      } catch (err) {
+        console.error("Xatolik:", err);
+        setError("Mahsulotlarni yuklab bo'lmadi");
+        toast.error("Mahsulotlarni yuklab bo'lmadi");
       } finally {
         setLoading(false);
       }
     };
 
-    getProducts();
+    fetchProducts();
   }, []);
 
+  // Update limited products when limit or allProducts change
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const response = await axios.get(`https://dummyjson.com/products?limit=${addOnLimit}`);
-        setLimitProducts(response.data.products);
-      } catch (error) {
-        console.error("Xatolik:", error);
+    setLimitedProducts(allProducts.slice(0, addOnLimit));
+  }, [allProducts, addOnLimit]);
+
+  // Persist cart to localStorage
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // Cart manipulation functions
+  const addToCart = useCallback((itemId) => {
+    console.log(`Mahsulot ID: ${itemId} savatchaga qo'shilmoqda...`);
+    
+    setCartItems(prev => {
+      const newQuantity = (prev[itemId] || 0) + 1;
+      toast.success("Mahsulot savatchaga qo'shildi");
+      return { ...prev, [itemId]: newQuantity };
+      
+    });
+  }, []);
+
+  const updateCartItem = useCallback((itemId, quantity) => {
+    if (quantity < 1) return;
+    
+    setCartItems(prev => {
+      return { ...prev, [itemId]: quantity };
+    });
+    toast.success("Mahsulot savatchada");
+  }, []);
+
+  const removeFromCart = useCallback((itemId) => {
+    setCartItems(prev => {
+      if (!prev[itemId]) {
+        toast.error("Savatchada bunday mahsulot mavjud emas");
+        return prev;
       }
-    };
-
-    getProducts();
-  }, [addOnLimit]);
-
-  const addToCart = (itemId) => {
-    let cartData = { ...cartItems };
-    if (cartData[itemId]) {
-      cartData[itemId] += 1;
-    } else {
-      cartData[itemId] = 1;
-    }
-    setCartItems(cartData);
-    toast.success("Mahsulot savatchaga qo'shildi");
-  };
-
-  const UpdateCartItem = (itemId, quantity) => {
-    let cartData = { ...cartItems };
-    cartData[itemId] = quantity;
-    setCartItems(cartData);
-    toast.success("Mahsulot savatchada yangilandi");
-  };
-
-  const RemoveFromCart = (itemId) => {
-    let cartData = { ...cartItems };
-    if (cartData[itemId]) {
-      cartData[itemId] -= 1;
-      if (cartData[itemId] <= 0) delete cartData[itemId];
+      
+      const newItems = { ...prev };
+      delete newItems[itemId];
       toast.success("Mahsulot savatchadan o'chirildi");
-    } else {
-      toast.error("Savatchada bunday mahsulot mavjud emas");
-    }
-    setCartItems(cartData);
-  };
+      return newItems;
+    });
+  }, []);
 
-  const addOnLimiProduct = () => {
+  const loadMoreProducts = useCallback(() => {
     setAddOnLimit(prev => prev + 10);
     toast.success(`Yana 10 ta mahsulot yuklandi`);
+  }, []);
+
+  const contextValue = {
+    user,
+    setUser,
+    isSeller,
+    setIsSeller,
+    products: limitedProducts,
+    cartItems,
+    addToCart,
+    updateCartItem,
+    removeFromCart,
+    loadMoreProducts,
+    showUserLogin,
+    setShowUserLogin,
+    allProducts,
+    loading,
+    error
   };
 
   return (
-    <AppContext.Provider value={{
-      user,
-      setUser,
-      isSeller,
-      setIsSeller,
-      products: LimitProducts,
-      cartItems,
-      addToCart,
-      UpdateCartItem,
-      RemoveFromCart,
-      addOnLimiProduct,
-      showUserLogin,
-      setShowUserLogin,
-      allProducts: allProducts,
-      loading
-    }}>
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );

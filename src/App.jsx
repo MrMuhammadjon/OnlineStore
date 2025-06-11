@@ -13,6 +13,7 @@ import UserProfile from "./components/UserProfile.jsx";
 import UserProfilOrders from "./components/UserProfilOrders.jsx"; // assuming this is your custom context
 
 export default function App() {
+
   const { loading } = useAppContext();
 
   const router = createBrowserRouter([

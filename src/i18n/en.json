@@ -41,7 +41,9 @@
         "onSale": "On Sale",
         "forMen": "For Men",
         "trending": "Trending",
-        "forWomen": "For Women"
+        "forWomen": "For Women",
+        "showmore": "Show More 10",
+        "add" : "Add to Cart"
     },
     "profile": {
         "profile": "Profile",
@@ -66,5 +68,12 @@
         "save": "Save",
         "mycommunities": "My Communities",
         "birthDate": "Date of Birth"
+    },
+    "menuItems": {
+        "bannerItem1": "Unlock Your Potential withExpert",
+        "bannerItem1-2": "Guidance&",
+        "bannerItem1-3": "Proven Results!",
+        "bannerItem2": "Achieve your goals faster with personalized strategies, hands-on support, and results that speak for themselves."
     }
+    
 }
