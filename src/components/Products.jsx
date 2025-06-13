@@ -214,7 +214,7 @@ const Products = () => {
 
                                         <div className="flex items-end justify-between mt-3">
                                             <div>
-                                                <p className="text-indigo-600 font-bold">
+                                                <p className="text-purple-600 font-bold">
                                                     ${product.discountPrice || product.price}
                                                 </p>
                                                 {product.discountPrice && (
@@ -226,7 +226,7 @@ const Products = () => {
                                             
                                             {quantity === 0 ? (
                                                 <button
-                                                    className="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-sm font-medium px-3 py-1.5 rounded-md transition-colors"
+                                                    className="bg-indigo-100 hover:bg-indigo-200 text-purple-700 text-sm font-medium px-3 py-1.5 rounded-md transition-colors"
                                                     onClick={() => handleAddToCart(product)}
                                                 >
                                                     {t('menu.add')}
@@ -234,16 +234,16 @@ const Products = () => {
                                             ) : (
                                                 <div className="flex items-center gap-2 bg-indigo-100 rounded-md">
                                                     <button 
-                                                        className="px-2 py-1.5 text-indigo-700 hover:bg-indigo-200 transition-colors"
+                                                        className="px-2 py-1.5 text-purple-700 hover:bg-indigo-200 transition-colors"
                                                         onClick={() => handleDecrement(product.id)}
                                                     >
                                                         -
                                                     </button>
-                                                    <span className="text-indigo-700 font-medium">
+                                                    <span className="text-indigo-purple font-medium">
                                                         {quantity}
                                                     </span>
                                                     <button 
-                                                        className="px-2 py-1.5 text-indigo-700 hover:bg-indigo-200 transition-colors"
+                                                        className="px-2 py-1.5 text-purple-700 hover:bg-indigo-200 transition-colors"
                                                         onClick={() => handleIncrement(product.id)}
                                                     >
                                                         +

@@ -75,7 +75,7 @@ export const AppContextProvider = ({ children }) => {
     setCartItems(prev => {
       return { ...prev, [itemId]: quantity };
     });
-    toast.success("Mahsulot savatchada");
+    toast.success("Savatcha yangilandi");
   }, []);
 
   const removeFromCart = useCallback((itemId) => {
