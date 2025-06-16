@@ -10,7 +10,8 @@ import Login from "./pages/LoginPage.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import { useAppContext } from "./context/AppContext";
 import UserProfile from "./components/UserProfile.jsx";
-import UserProfilOrders from "./components/UserProfilOrders.jsx"; // assuming this is your custom context
+import UserProfilOrders from "./components/UserProfilOrders.jsx";
+import EditPorfil from "./pages/EditProfil.jsx";
 
 export default function App() {
 
@@ -34,6 +35,7 @@ export default function App() {
           ),
           children: [
             { index: true, element: <UserProfile /> },
+            { path: "editProfil", element: <EditPorfil /> },
             { path: "profilorders", element: <UserProfilOrders /> }
           ]
         },
@@ -50,15 +52,6 @@ export default function App() {
 
     }
   ]);
-
-  if (loading) {
-    return (
-      <div id="preload" data-preload>
-        <div id="circle"></div>
-        <div id="text">Uzum</div>
-      </div>
-    );
-  }
 
   return <RouterProvider router={router} />;
 }

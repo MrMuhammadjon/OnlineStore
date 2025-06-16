@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect  } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -45,6 +45,8 @@ const UserProfile = () => {
             });
         }
     }, [user]);
+
+
     return (
         <>
             <div className="max-w-4xl mx-auto p-4 sm:p-6 bg-white rounded-lg shadow-md flex-2">
@@ -188,12 +190,14 @@ const UserProfile = () => {
                                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </div>
-                            <button
-                                onClick={() => toast.success('Ma\'lumotlar saqlandi')}
-                                className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-                            >
-                                {t('profile.save')}
-                            </button>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => navigate("/profile/editProfil")}
+                                    className="mt-6 px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+                                >
+                                    {t('profile.edit')}
+                                </button>
+                            </div>
 
                         </div>
                     </div>

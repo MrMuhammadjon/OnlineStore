@@ -7,7 +7,7 @@ const Profile = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="w-[90%] md:w-[85%] m-auto mt-8 flex gap-3 h-[500px]">
+    <div className="w-[90%] md:w-[85%] m-auto mt-8 flex gap-3 h-auto">
       <div className="flex flex-col items-center mb-6 h-full flex-1 gap-2">
         <button
         onClick={() => navigate('/profile/profilorders')}

@@ -67,7 +67,8 @@
         "fatherName": "Ota ismi",
         "save": "Saqlash",
         "mycommunities": "Majumotlarim",
-        "birthDate": "Tug'ilgan sana"
+        "birthDate": "Tug'ilgan sana",
+        "edit": "tahrirlash"
     },
     "menuItems": {
         "bannerItem1": "Mutaxassis Yordamida",

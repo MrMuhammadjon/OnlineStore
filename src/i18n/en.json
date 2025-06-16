@@ -67,7 +67,8 @@
         "fatherName": "Father's Name",
         "save": "Save",
         "mycommunities": "My Communities",
-        "birthDate": "Date of Birth"
+        "birthDate": "Date of Birth",
+        "edit": "edit"
     },
     "menuItems": {
         "bannerItem1": "Unlock Your Potential withExpert",
